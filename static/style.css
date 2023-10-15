@@ -2133,7 +2133,7 @@ ul.blog-instagram-feed-widget li {
     position: relative;
 }
 .home-alt .promotions-img::after {
-    background: #000000 none repeat scroll 0 0;
+    /*background: #000000 none repeat scroll 0 0;*/
     content: "";
     height: 100%;
     left: 0;
