@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Elixir - HTML Template</title>
+    <title>Ristauito Demo</title>
     <!-- GOOGLE FONTS -->
     <link href='http://fonts.googleapis.com/css?family=Yellowtail%7cCabin:400,500,600,700,400italic,700italic%7cLibre+Baskerville:400italic%7cGreat+Vibes%7cOswald:400,300,700%7cOpen+Sans:600italic,700' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,300,600,700' rel='stylesheet' type='text/css'>
+    <link rel="icon" type="image/x-icon" href="static/images/favicon.png">
 
     <!-- META TAGS -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -53,31 +54,28 @@
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
                         <i class="fa fa-bars"></i>
                         </button>
-                    <a class="navbar-brand normal logo" href="static/#home"><div class="logo_elixir">
+                    <a class="navbar-brand normal logo" href="#home"><div class="logo_elixir">
                         <img src="static/images/logo_elixir.png" alt="" style="margin-top: -10px">
                     </div></a>
-                    <a class="navbar-brand mini" href="static/#home"><div class="logo_elixir dark"></div></a>
-                    <a class="navbar-brand mini darker" href="static/#home"><div class="logo_elixir dark"></div></a>
+                    <a class="navbar-brand mini" href="#home"><div class="logo_elixir dark"></div></a>
+                    <a class="navbar-brand mini darker" href="#home"><div class="logo_elixir dark"></div></a>
                 </div>
 
                 <!-- BEGIN NAVIGATION MENU-->
                 <nav class="collapse navbar-collapse navbar-right navbar-main-collapse" role="navigation">
                     <ul id="nav" class="nav navbar-nav navigation">
-<!--                        <li class="page-scroll menu-item"><a href="static/#home-slider">Home</a></li>-->
-<!--                        <li class="page-scroll menu-item"><a href="static/#about">About</a></li>-->
-<!--                        <li class="page-scroll menu-item"><a href="static/menu.html">Menu</a></li>-->
-<!--                        <li class="page-scroll menu-item"><a href="static/#gallery">Gallery</a></li>-->
-<!--                        <li class="page-scroll menu-item"><a href="static/#reservations">Reservations</a></li>-->
-<!--                        <li class="page-scroll menu-item"><a href="static/#contact">Location</a></li>-->
+                        <li class="page-scroll menu-item"><a href="#home-slider">Home</a></li>
+                        <li class="page-scroll menu-item"><a href="#about">Nostra Storia</a></li>
+                        <li class="page-scroll menu-item"><a href="#timetable">Orari Di Apertura</a></li>
+                        <li class="page-scroll menu-item"><a href="#menu">Menu</a></li>
+                        <li class="page-scroll menu-item"><a href="#reservations">Prenotare</a></li>
+                        <li class="page-scroll menu-item"><a href="#testimonials">Recensioni</a></li>
                     </ul>
                 </nav>
                 <!-- EN NAVIGATION MENU -->
             </div>
         </header>
         <!-- END HEADER -->
-
-
-
 
         <!-- BEGIN HOME SLIDER SECTION -->
         <section id="home-slider">
@@ -100,7 +98,7 @@
                         <h2>Benvenuti</h2>
                     </div>
                     <div class="item">
-                        <h2>Aumentare i visitatori del tuo ristorante</h2>
+                        <h2>Pizze e Pasta</h2>
                     </div>
                 </div>
                 <div class="slide-sep"></div>
@@ -341,7 +339,43 @@
     } )( jQuery );
     </script>
 
+<script>
+    function includeHTML() {
+        var z, i, elmnt, file, xhttp;
+        /*loop through a collection of all HTML elements:*/
+        z = document.getElementsByTagName("*");
+        for (i = 0; i < z.length; i++) {
+            elmnt = z[i];
+            /*search for elements with a certain attribute:*/
+            file = elmnt.getAttribute("w3-include-html");
+            if (file) {
+                /*make an HTTP request using the attribute value as the file name:*/
+                xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function () {
+                    if (this.readyState == 4) {
+                        if (this.status == 200) {
+                            elmnt.innerHTML = this.responseText;
+                        }
+                        if (this.status == 404) {
+                            elmnt.innerHTML = "Page not found.";
+                        }
+                        /*remove the attribute, and call this function once more:*/
+                        elmnt.removeAttribute("w3-include-html");
+                        includeHTML();
+                    }
+                }
+                xhttp.open("GET", file, true);
+                xhttp.send();
+                /*exit the function:*/
+                return;
+            }
+        }
+    };
+</script>
 
+<script>
+    includeHTML();
+</script>
 <!-- END Scripts -->
 </body>
 </html>
