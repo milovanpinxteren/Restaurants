@@ -765,6 +765,10 @@ a.read-more {
     width: 100%;
 }
 
+.footer-area-bg {
+    height: 0;
+}
+
 .promotion-area-bg::after,
 .reservation-button-area-bg:after,
 .blog-area-bg:after,
